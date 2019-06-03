@@ -47,7 +47,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		419D916922A2729F007319D1 /* EComCoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EComCoreDataStack.swift; sourceTree = "<group>"; };
 		419D916B22A30576007319D1 /* EComAPIHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EComAPIHandler.swift; sourceTree = "<group>"; };
 		419D91A822A42EFB007319D1 /* EComUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EComUtil.swift; sourceTree = "<group>"; };
 		419D91AA22A45C94007319D1 /* ChildCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChildCategoryViewController.swift; sourceTree = "<group>"; };
@@ -101,6 +100,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		419D91AF22A51BF6007319D1 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				41C5CD5E22A118EE0073388A /* EComDataController.swift */,
+				41C5CD6622A122A90073388A /* EComConstants.swift */,
+				419D91A822A42EFB007319D1 /* EComUtil.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		41C5CD4C22A10F110073388A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -145,6 +154,7 @@
 		41D23134229FCAF800B12394 /* HeadyEComApp */ = {
 			isa = PBXGroup;
 			children = (
+				419D91AF22A51BF6007319D1 /* Common */,
 				41C5CD5722A110FA0073388A /* Controller */,
 				41C5CD4C22A10F110073388A /* Model */,
 				41D23135229FCAF800B12394 /* AppDelegate.swift */,
@@ -154,11 +164,7 @@
 				41D23141229FCAFB00B12394 /* LaunchScreen.storyboard */,
 				41D23144229FCAFB00B12394 /* Info.plist */,
 				41D2313C229FCAF800B12394 /* HeadyEComApp.xcdatamodeld */,
-				41C5CD5E22A118EE0073388A /* EComDataController.swift */,
-				41C5CD6622A122A90073388A /* EComConstants.swift */,
-				419D916922A2729F007319D1 /* EComCoreDataStack.swift */,
 				419D916B22A30576007319D1 /* EComAPIHandler.swift */,
-				419D91A822A42EFB007319D1 /* EComUtil.swift */,
 			);
 			path = HeadyEComApp;
 			sourceTree = "<group>";
