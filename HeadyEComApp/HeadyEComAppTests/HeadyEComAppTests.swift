@@ -10,6 +10,7 @@ import XCTest
 @testable import HeadyEComApp
 
 class HeadyEComAppTests: XCTestCase {
+    let testBundle = Bundle(for: HeadyEComAppTests.self)
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -31,8 +32,52 @@ class HeadyEComAppTests: XCTestCase {
         }
     }
     
-    func test01_categoryVC_refresh() {
+    func test01_deleteCache() {
+        let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let jsonUrl = url!.appendingPathComponent(EComConstants.cachedFileName)
         
+        EComUtil.deleteCache()        
+        XCTAssertFalse(FileManager().fileExists(atPath: jsonUrl.path))
     }
+    
+    func test02_writeToCache() {
+        let url = try? FileManager.default.url(for: .documentDirectory, in: .userDomainMask, appropriateFor: nil, create: false)
+        let jsonUrl = url!.appendingPathComponent(EComConstants.cachedFileName)
+        
+        let data = Data()
+        _ = EComUtil.writeDataToCache(data: data)
+        XCTAssertTrue(FileManager().fileExists(atPath: jsonUrl.path))
+    }
+    
+    func test03_getCache() {
+        
+        if let path = testBundle.path(forResource: "SampleTest", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                _ = EComUtil.writeDataToCache(data: data)
+                let response = EComUtil.getCacheData()
+                XCTAssertNotNil(response.0)
 
+            } catch {
+                // handle error
+            }
+        }
+    }
+    
+    func test04_getProductFromId() {
+        let id = 1
+        if let path = testBundle.path(forResource: "SampleTest", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .mappedIfSafe)
+                _ = EComUtil.writeDataToCache(data: data)
+                sleep(2)
+                EComUtil.updateDatacontroller(data: EComUtil.getCacheData().0!)
+            }
+            catch {
+                
+            }
+        }
+        let obj = EComUtil.getProductWithId(id)
+        XCTAssertEqual(obj?.name, "Nike Sneakers")
+    }
 }
