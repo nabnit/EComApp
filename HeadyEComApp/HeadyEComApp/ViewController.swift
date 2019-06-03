@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     @IBOutlet weak var txtPassword: UITextField!
     override func viewDidLoad() {
         super.viewDidLoad()
+        txtUserName.text = "Test"
+        txtPassword.text = "Test123"
     }
 
     @IBAction func onClickBtnLogin(_ sender: Any) {
